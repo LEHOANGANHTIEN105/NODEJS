@@ -2,7 +2,7 @@
 
 ## MÔ TẢ CÁCH CHẠY
 
-## 1. Các bước thực hiện
+## Các bước thực hiện
 
 **Bước 1:** Mở Terminal tại thư mục `BT 04`.
 
