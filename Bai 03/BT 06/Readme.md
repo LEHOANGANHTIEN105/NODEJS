@@ -31,17 +31,17 @@ Chương trình hiển thị thông tin 3 sinh viên:
 
 ===== KET QUA HOC TAP =====
 ----------------------------
-Sinh vien: 1
+**Sinh vien: 1
 Ho ten: Nguyen Hoang Hai
 Diem trung binh: 8.67
-Xep loai: Giỏi
+Xep loai: Giỏi**
 ----------------------------
-Sinh vien: 2
+**Sinh vien: 2
 Ho ten: Tran Quoc Huy
 Diem trung binh: 6.67
-Xep loai: Khá
+Xep loai: Khá**
 ----------------------------
-Sinh vien: 3
+**Sinh vien: 3
 Ho ten: Le Hoang Anh Tien
 Diem trung binh: 4.33
-Xep loai: Yếu
+Xep loai: Yếu**
