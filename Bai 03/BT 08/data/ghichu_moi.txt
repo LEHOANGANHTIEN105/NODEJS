@@ -1,3 +1,0 @@
-Dong 1: Hoc lap trinh Node.js
-Dong 2: Tim hieu module File System
-Dong 3: Thuc hanh doc va ghi file
