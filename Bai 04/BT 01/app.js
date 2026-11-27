@@ -6,7 +6,6 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Menu
 const menu = [
     { name: 'Trang chủ', url: '/' },
     { name: 'Giới thiệu', url: '/about' },
@@ -15,7 +14,6 @@ const menu = [
     { name: 'Liên hệ', url: '/contact' }
 ];
 
-// Giao dien chung
 function layout(title, content, active) {
     return `
     <!DOCTYPE html>
