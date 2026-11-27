@@ -6,15 +6,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-const menu = [
-    { name: 'Trang chủ', url: '/' },
-    { name: 'Giới thiệu', url: '/about' },
-    { name: 'Kỹ năng', url: '/skills' },
-    { name: 'Sở thích', url: '/hobbies' },
-    { name: 'Liên hệ', url: '/contact' }
-];
-
-function layout(title, content, active) {
+function renderPage(title, content) {
     return `
     <!DOCTYPE html>
     <html lang="vi">
@@ -26,13 +18,13 @@ function layout(title, content, active) {
     </head>
     <body>
         <header>
-            <h2>My Website</h2>
+            <h1>WEBSITE CÁ NHÂN</h1>
             <nav>
-                ${menu.map(item => `
-                    <a href="${item.url}" class="${active === item.url ? 'active' : ''}">
-                        ${item.name}
-                    </a>
-                `).join('')}
+                <a href="/">Trang chủ</a>
+                <a href="/about">Giới thiệu</a>
+                <a href="/skills">Kỹ năng</a>
+                <a href="/hobbies">Sở thích</a>
+                <a href="/contact">Liên hệ</a>
             </nav>
         </header>
 
@@ -41,7 +33,7 @@ function layout(title, content, active) {
         </main>
 
         <footer>
-            <p>© 2026 - Lê Hoàng Anh Tiên</p>
+            <p>© 2026 - Website giới thiệu cá nhân</p>
         </footer>
     </body>
     </html>
@@ -49,61 +41,119 @@ function layout(title, content, active) {
 }
 
 app.get('/', (req, res) => {
-    res.send(layout('Trang chủ', `
-        <h1>Xin chào!</h1>
-        <h2>Mình là Anh Tiên</h2>
-        <p>Chào mừng bạn đến với website cá nhân của mình.</p>
-        <p>Mình là sinh viên ngành Công nghệ thông tin.</p>
-    `, '/'));
+    res.send(renderPage('Trang chủ', `
+        <section class="hero">
+            <h2>Xin chào! Mình là Anh Tiên</h2>
+            <p>Chào mừng bạn đến với website giới thiệu cá nhân của mình.</p>
+            <p>Mình là sinh viên ngành Công nghệ thông tin.</p>
+            <a class="btn" href="/about">Tìm hiểu về mình</a>
+        </section>
+    `));
 });
 
 app.get('/about', (req, res) => {
-    res.send(layout('Giới thiệu', `
-        <h1>Giới thiệu bản thân</h1>
-        <p>Họ tên: Lê Hoàng Anh Tiên</p>
-        <p>Lớp: CĐ - CNTT18A</p>
-        <p>Ngành học: Công nghệ thông tin</p>
-        <p>Địa chỉ: Khánh Hòa</p>
-    `, '/about'));
+    res.send(renderPage('Giới thiệu', `
+        <section>
+            <h2>Giới thiệu bản thân</h2>
+            <p><strong>Họ tên:</strong> Lê Hoàng Anh Tiên</p>
+            <p><strong>Ngành học:</strong> Công nghệ thông tin</p>
+            <p><strong>Lớp:</strong> CĐ - CNTT18A</p>
+            <p>Mình là người yêu thích công nghệ, thích học hỏi
+            và khám phá những kiến thức mới.</p>
+        </section>
+    `));
 });
 
+
 app.get('/skills', (req, res) => {
-    res.send(layout('Kỹ năng', `
-        <h1>Kỹ năng</h1>
-        <p>HTML và CSS</p>
-        <p>JavaScript</p>
-        <p>Node.js và Express</p>
-        <p>MongoDB cơ bản</p>
-    `, '/skills'));
+    res.send(renderPage('Kỹ năng', `
+        <section class="skills-section">
+            <h2>Những kỹ năng của mình</h2>
+            <p class="skills-intro">
+                Một số kiến thức và công nghệ mình đang học tập, phát triển.
+            </p>
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+                    <h3>HTML & CSS</h3>
+                    <p>Thiết kế cấu trúc và giao diện website.</p>
+                    <span class="level">Cơ bản - Khá</span>
+                </div>
+
+                <div class="skill-card">
+                    <h3>JavaScript</h3>
+                    <p>Xây dựng chức năng và tương tác cho website.</p>
+                    <span class="level">Cơ bản</span>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Node.js</h3>
+                    <p>Xây dựng ứng dụng phía máy chủ.</p>
+                    <span class="level">Đang học</span>
+                </div>
+
+                <div class="skill-card">
+                    <h3>React Native</h3>
+                    <p>Phát triển giao diện ứng dụng di động.</p>
+                    <span class="level">Đang học</span>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Cơ sở dữ liệu</h3>
+                    <p>Làm quen với lưu trữ và quản lý dữ liệu.</p>
+                    <span class="level">Cơ bản</span>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Thiết kế giao diện</h3>
+                    <p>Sắp xếp bố cục và lựa chọn màu sắc UI.</p>
+                    <span class="level">Đang phát triển</span>
+                </div>
+
+            </div>
+        </section>
+    `));
 });
 
 app.get('/hobbies', (req, res) => {
-    res.send(layout('Sở thích', `
-        <h1>Sở thích</h1>
-        <p>Nghe nhạc</p>
-        <p>Xem phim</p>
-        <p>Đi du lịch</p>
-        <p>Tìm hiểu công nghệ</p>
-    `, '/hobbies'));
+    res.send(renderPage('Sở thích', `
+        <section>
+            <h2>Sở thích của mình</h2>
+            <div class="hobby-list">
+                <div class="hobby">Nghe nhạc</div>
+                <div class="hobby">Xem phim</div>
+                <div class="hobby">Lập trình</div>
+                <div class="hobby">Du lịch</div>
+                <div class="hobby">Chụp ảnh</div>
+            </div>
+        </section>
+    `));
 });
 
 app.get('/contact', (req, res) => {
-    res.send(layout('Liên hệ', `
-        <h1>Liên hệ</h1>
-        <p>Họ tên: Lê Hoàng Anh Tiên</p>
-        <p>Email: anhient15@gmail.com</p>
-        <p>Địa chỉ: Khánh Hòa</p>
-    `, '/contact'));
+    res.send(renderPage('Liên hệ', `
+        <section>
+            <h2>Thông tin liên hệ</h2>
+            <p><strong>Họ tên:</strong> Lê Hoàng Anh Tiên</p>
+            <p><strong>Email:</strong> anhient15@gmail.com</p>
+            <p><strong>Số điện thoại:</strong> 0347827054</p>
+            <p>Cảm ơn bạn đã ghé thăm website của mình!</p>
+        </section>
+    `));
 });
 
 app.use((req, res) => {
-    res.status(404).send(layout('Lỗi 404', `
-        <h1>404 - Không tìm thấy trang!</h1>
-        <p>Đường dẫn không tồn tại.</p>
-        <a href="/">Quay lại trang chủ</a>
-    `, ''));
+    res.status(404).send(renderPage('404 - Không tìm thấy', `
+        <section class="error">
+            <h2>404</h2>
+            <h3>Không tìm thấy trang!</h3>
+            <p>Đường dẫn bạn truy cập không tồn tại.</p>
+            <a class="btn" href="/">Quay về trang chủ</a>
+        </section>
+    `));
 });
 
 app.listen(PORT, () => {
-    console.log('Server đang chạy tại http://localhost:' + PORT);
+    console.log(`Server đang chạy tại http://localhost:${PORT}`);
 });
