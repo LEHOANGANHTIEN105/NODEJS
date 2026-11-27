@@ -1,12 +1,16 @@
 {
-  "name": "my-nodejs-website",
+  "name": "mynodejs",
   "version": "1.0.0",
-  "description": "Website ca nhan su dung Node.js va Express",
+  "description": "Website gioi thieu ca nhan",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.3.0"
   }
 }
