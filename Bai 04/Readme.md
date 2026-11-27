@@ -1,6 +1,6 @@
 # BÀI 4: XÂY DỰNG WEB VỚI NỀN TẢNG EXPRESS (EPRESS FRAMEWORK)
 
-## 3. Cài đặt và thực hiện
+## Cài đặt và thực hiện
 
 ### Bước 1: Mở thư mục thực hành
 
@@ -20,7 +20,7 @@ npm init -y
 npm install express
 ```
 
-## 4. Nội dung thực hiện
+## Nội dung thực hiện
 
 ### Ví dụ 1: Express cơ bản
 
